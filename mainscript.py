@@ -34,7 +34,7 @@ def main(stdscr):
     response_list = []
 
     stdscr.refresh()
-    while chr(press) is not "q" and text_index < text_array.shape[0]:
+    while True:
         text_window.clear()
         # Fill window for text
         text = text_array.text.iloc[text_index]
@@ -51,13 +51,19 @@ def main(stdscr):
         # Get input
         press = stdscr.getch()
         
-        if chr(press) is not "q":
-            response_list.append(chr(press))
-            text_index += 1
+        if press is ord("q"):
+            break
+
+        # Add response to the list
+        response_list.append(chr(press))
+        text_index += 1
+        # If all the texts are labeled, break
+        if text_index >= text_array.shape[0]:
+            break
     
-    if chr(press) is not "q":
+    if press is not ord("q"):
         text_array['response'] = response_list
         text_array.to_csv("labeled.csv")
 
-data_filename = "loret_ipsum.csv"
+data_filename = "test.csv"
 wrapper(main)
