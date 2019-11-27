@@ -3,7 +3,8 @@ A small text labeling tool in 'curses'.
 
 In mainscript.py it is possible to change the name of the file with the texts
 you want to label. The script expects CSV-files with the text in a column named 
-'text'. 
+'text'. Currently the text is displayed in curses 'windows'; in order to prevent
+an error the text displayed is shortened.
 
 The labeled file will be stored as labeled.csv.
 
