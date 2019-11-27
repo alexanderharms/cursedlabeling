@@ -35,8 +35,12 @@ def main(stdscr):
 
     stdscr.refresh()
     while chr(press) is not "q" and text_index < text_array.shape[0]:
+        text_window.clear()
         # Fill window for text
         text = text_array.text.iloc[text_index]
+        # Trim the text short to fit in the window
+        text = text[0:((text_cols - 1) * (text_rows - 10))]
+
         text_window.addstr(0, 0, text)
         text_window.refresh()
 
@@ -50,9 +54,10 @@ def main(stdscr):
         if chr(press) is not "q":
             response_list.append(chr(press))
             text_index += 1
+    
+    if chr(press) is not "q":
+        text_array['response'] = response_list
+        text_array.to_csv("labeled.csv")
 
-    text_array['response'] = response_list
-    text_array.to_csv("labeled.csv")
-
-data_filename = "test.csv"
+data_filename = "loret_ipsum.csv"
 wrapper(main)
