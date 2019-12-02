@@ -11,3 +11,4 @@ The labeled file will be stored as labeled.csv.
 To do:
 - Make the text field scrollable.
 - Make it possible to limit the options you can label with.
+- Enable multi-labeling
