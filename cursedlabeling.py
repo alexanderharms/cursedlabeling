@@ -96,7 +96,7 @@ def labeling(stdscr, text_array, text_column, multilabelBool = False):
             break
     
     if press is not ord("q"):
-        text_array['response'] = response_list
+        text_array['label'] = response_list
         text_array.to_csv("labeled.csv")
 
 if __name__ == '__main__':
