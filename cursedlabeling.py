@@ -35,7 +35,8 @@ def generate_text_window(num_rows, num_cols,
                      text_rows_loc, text_cols_loc]
     return text_window, text_win_prop
 
-def labeling(stdscr, text_array, text_column, multilabelBool = False):
+def labeling(stdscr, text_array, text_column, multilabelBool = False,
+             multiCharBool = False):
     # Clear screen
     stdscr.clear()
     num_rows, num_cols = stdscr.getmaxyx()
@@ -49,17 +50,22 @@ def labeling(stdscr, text_array, text_column, multilabelBool = False):
 
     press = 1
     text_index = 0
-    response_list = []
+    response_list = [None] * text_array.shape[0]
     response_press = []
 
     stdscr.refresh()
 
     # Create a window for instructions
     if multilabelBool:
-        instr_window.addstr(0, 0, "Multi-label. Press 'n' for next text. " 
-                + "Press 'q' to close")
+        instr_window.addstr(0, 0, "Multi-label. "
+                + "Enter the label (single character). "
+                + "Press 'n' for next text. " 
+                + "Press 'b' for previous text. " 
+                + "Press 'q' to close.")
     else:
-        instr_window.addstr(0, 0, "Single label. Press 'q' to close")
+        instr_window.addstr(0, 0, "Single label. " 
+        + "Enter the label (single character). " 
+        + "Press 'q' to close.")
     instr_window.refresh()
 
     # Start the labeling procedure
@@ -76,19 +82,30 @@ def labeling(stdscr, text_array, text_column, multilabelBool = False):
         # Get input
         press = stdscr.getch()
         
+        #press_string = ""
+        
         if multilabelBool:
             if press is ord("q"):
                 break
             elif press is ord("n"):
-                response_list.append(response_press)
+                # Next text
+                response_list[text_index] = response_press
+                #response_list.append(chr(press))
                 response_press = []
                 text_index += 1
+            elif press is ord("b"):
+                # Previous text
+                text_index -= 1
+                response_press = []
             else:
                 # Add response to the list
                 response_press.append(chr(press))
         else:
+            if press is ord("q"):
+                break
             # Add response to the list
-            response_list.append(chr(press))
+            response_list[text_index] = response_press
+            #response_list.append(chr(press))
             text_index += 1
 
         # If all the texts are labeled, break
@@ -106,6 +123,8 @@ if __name__ == '__main__':
                         help="Name of the text column")
     parser.add_argument("-m", "--multi", action="store_true",
                         help="Enable multi-label labeling")
+    parser.add_argument("-c", "--char", action="store_true",
+                        help="Enable multi-character labels")
     args = parser.parse_args()
 
     data_filename = args.filename
