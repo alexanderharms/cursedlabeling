@@ -1,8 +1,6 @@
 # cursedlabeling 
 A small text labeling tool in
-['curses'](https://docs.python.org/3.6/howto/curses.html).  
-
-![Version 0.5.0](https://img.shields.io/badge/version-0.5.0-brightgreen)
+['curses'](https://docs.python.org/3.6/howto/curses.html). ![Version 0.5.0](https://img.shields.io/badge/version-0.5.0-brightgreen)
 
 ## Usage
 ```
@@ -15,6 +13,8 @@ it is possible to assign multiple labels to one text.
 When using the 'multi'-flag the next text can be summoned by pressing 'n';
 when not using this flag the next text will be presented as soon as a label
 is assigned.
+
+![cursedlabeling multi-label interface](https://alexanderharms.github.io/images/cursedlabeling_singlelabel.png)  
 
 Currently the text is displayed in curses 'windows'; in order to prevent
 an error the text displayed is shortened.
