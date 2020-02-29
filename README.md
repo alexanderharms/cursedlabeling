@@ -4,11 +4,15 @@ A small text labeling tool in
 
 ## Usage
 ```
-python3 cursedlabeling.py (--multi) filename --column columnname 
+python cursedlabeling.py (--multi) filename --column columnname 
 ```
 By calling the script in this way it is possible to start labeling the 
 column 'columnname' from file 'filename'. By using the flag '--multi' or '-m'
-it is possible to assign multiple labels to one text. 
+it is possible to assign multiple labels to one text.  
+
+When using the 'multi'-flag the next text can be summoned by pressing 'n';
+when not using this flag the next text will be presented as soon as a label
+is assigned.
 
 Currently the text is displayed in curses 'windows'; in order to prevent
 an error the text displayed is shortened.
@@ -16,7 +20,10 @@ an error the text displayed is shortened.
 The labeled file will be stored as labeled.csv with the response in the 
 column 'label'. 
 
-To do:
+This script is tested with Python 3.7 and depends on pandas to process
+ the CSV-files.
+
+## To do:
 - Make the text field scrollable.
 - Make it possible to limit the options you can label with.
 - Make it possible to use labels with multiple characters.
