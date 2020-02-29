@@ -1,6 +1,8 @@
-# cursedlabeling
+# cursedlabeling 
 A small text labeling tool in
-['curses'](https://docs.python.org/3.6/howto/curses.html). 
+['curses'](https://docs.python.org/3.6/howto/curses.html).  
+
+![Version 0.5.0](https://img.shields.io/badge/version-0.5.0-brightgreen)
 
 ## Usage
 ```
@@ -24,8 +26,8 @@ This script is tested with Python 3.7 and depends on pandas to process
  the CSV-files.
 
 ## To do:
-- Make the text field scrollable.
-- Make it possible to limit the options you can label with.
-- Make it possible to use labels with multiple characters.
-- Remove pandas dependency for the interaction of the csv and replace with
+- [ ] Make the text field scrollable.
+- [ ] Make it possible to limit the options you can label with.
+- [ ] Make it possible to use labels with multiple characters.
+- [ ] Remove pandas dependency for the interaction of the csv and replace with
   Python's built in csv functionality.
