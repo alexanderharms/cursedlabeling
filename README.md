@@ -14,7 +14,7 @@ When using the 'multi'-flag the next text can be summoned by pressing 'n';
 when not using this flag the next text will be presented as soon as a label
 is assigned.
 
-![cursedlabeling multi-label interface](https://alexanderharms.github.io/images/cursedlabeling_singlelabel.png)  
+![cursedlabeling multi-label interface](https://alexanderharms.github.io/images/cursedlabeling_multilabel.png)  
 
 Currently the text is displayed in curses 'windows'; in order to prevent
 an error the text displayed is shortened.
